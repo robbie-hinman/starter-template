@@ -1,0 +1,28 @@
+{
+  "name": "pipeline",
+  "version": "1.0.0",
+  "description": "Drug pipeline",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "robbie hinman",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "eslint": "^3.6.0",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-loader": "^1.5.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.3.0",
+    "json-loader": "^0.5.4",
+    "jsx-loader": "^0.13.2",
+    "react": "^15.3.2",
+    "react-router": "^2.8.1",
+    "static-site-generator-webpack-plugin": "^3.0.0",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1"
+  }
+}
