@@ -1,14 +1,23 @@
 const path = require('path');
-const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
-const data = require('./data');
+const validate = require('webpack-validator'); // eslint-disable-line import/no-extraneous-dependencies
 
-module.exports = {
+// const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
+// const data = require('./data');
+
+const PATHS = {
+  app: path.join(__dirname, 'src'),
+  build: path.join(__dirname, 'build')
+};
+
+const myconfig = {
   context: __dirname,
-  entry: 'entry.js',
+  entry: {
+    app: PATHS.app
+  },
   output: {
-    path: path.join(__dirname, '/public'),
+    path: PATHS.build,
     filename: 'bundle.js',
-    libraryTarget: 'umd',
+    libraryTarget: 'umd'
   },
   resolve: {
     extensions: ['', '.js', '.jsx', '.json'],
@@ -18,9 +27,9 @@ module.exports = {
     reasons: true,
     chunks: false,
   },
-  plugins: [
-    new StaticSiteGeneratorPlugin('bundle.js', data.routes, data),
-  ],
+  // plugins: [
+  //   new StaticSiteGeneratorPlugin('bundle.js', data.routes, data),
+  // ],
   module: {
     // 'preloaders' called because we want the eslint check to be on the code before it gets bundled
     preLoaders: [{
@@ -34,6 +43,12 @@ module.exports = {
     }, {
       test: /\.json$/,
       loader: 'json-loader',
+    }, {
+      test: /\.css$/,
+      loaders: ['style', 'css'],
     }],
   },
 };
+
+validate(myconfig);
+module.exports = myconfig;
